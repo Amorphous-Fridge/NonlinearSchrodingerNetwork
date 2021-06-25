@@ -33,12 +33,13 @@ nn = np.asarray([8,16,32,64,128,256,512])
 N = len(nn)
 nni = np.arange(0,7)
 
-for i2 in nni[numLayers//2:N]:
+#TODO: Fix the for loops.
+for i3 in nni[numLayers//2:N]:
     for i3 in nni[numLayers//2:N]:
         for i1 in range(1,i2):
             for i4 in range(1,i3):
-                if ((abs(i2-i3)>1)or(abs(i1-i4)>1))or\
-                   ((abs(i2-i3)>0)and(abs(i1-i4)>0)):
+                if ((abs(i2-i3)>1)or(abs(i2-i3)>1))or\
+                   ((abs(i2-i3)>0)and(abs(i2-i3)>0)):
                     continue
                 width1 = nn[i1]
                 width2 = nn[i2]
