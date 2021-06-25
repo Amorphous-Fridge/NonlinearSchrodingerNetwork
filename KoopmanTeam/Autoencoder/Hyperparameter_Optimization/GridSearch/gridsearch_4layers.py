@@ -56,7 +56,7 @@ for i2 in nni[numLayers//2:N]:
                 decoding_layer_1 = tf.keras.layers.Dense(width4, activation = "selu", name='decoding_layer_1')(antikoop_state)
                 decoding_layer_2 = tf.keras.layers.Dense(width3, activation = "selu", name='decoding_layer_2')(decoding_layer_1)
                 decoding_layer_3 = tf.keras.layers.Dense(width2, activation = "selu", name='decoding_layer_3')(decoding_layer_2)
-                decoding_layer_4 = tf.keras.layers.Dense(width1, activation = "selu", name='decoding_layer_3')(decoding_layer_3)
+                decoding_layer_4 = tf.keras.layers.Dense(width1, activation = "selu", name='decoding_layer_4')(decoding_layer_3)
                 decoded_state = tf.keras.layers.Dense(STATE_DIMENSION, activation = "selu", name='decoded_layer')(decoding_layer_4)
                 #####################################################################################################################
                 #Model declarations
