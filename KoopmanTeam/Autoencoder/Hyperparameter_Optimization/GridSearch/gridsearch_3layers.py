@@ -20,7 +20,9 @@ if len(physical_devices) != 0:
 #PARAMETER SETUP
 STATE_DIMENSION = 4    #Treating two complex dimensions as 4 real dimensions for now
                           #Vector will be [real1, imag1, real2, imag2]
-ANTIKOOPMAN_DIMENSION = 2
+ANTIKOOPMAN_DIMENSION = 3
+os.environ['STATE_DIM'] = str(STATE_DIMENSION)
+os.environ['ANTIK_DIM'] = str(ANTIKOOPMAN_DIMENSION)
 
 initial_state = tf.keras.Input(shape = STATE_DIMENSION)
 antikoop_state = tf.keras.Input(shape = ANTIKOOPMAN_DIMENSION)
@@ -32,13 +34,17 @@ numLayers = 3
 nn = np.asarray([8,16,32,64,128,256,512])
 N = len(nn)
 nni = np.arange(0,7)
-
+n = 0
 for i2 in nni[numLayers//2:N]:
-    for i1 in range(1,i2):
-        for i3 in range(1,i2):
+    for i1 in range(0,i2):
+        for i3 in range(0,i2):
             width1 = nn[i1]
             width2 = nn[i2]
             width3 = nn[i3]
+            if (width1 != 256) or (width2 !=512) or (width3 != 256):
+                continue
+            n +=1
+            print(n)
             ##########################################ENCODER####################################################################
             encoding_layer_1 = tf.keras.layers.Dense(width1, activation="selu", name='encoding_layer_1')(initial_state)
             encoding_layer_2 = tf.keras.layers.Dense(width2, activation="selu", name='encoding_layer_2')(encoding_layer_1)
@@ -57,10 +63,10 @@ for i2 in nni[numLayers//2:N]:
             Phi_inv = tf.keras.Model(inputs = antikoop_state, outputs = decoded_state, name='Phi_inv')
             Autoencoder = tf.keras.models.Sequential([Phi, Phi_inv], name='Autoencoder')
             #COMPILE AND TRAIN
-            Autoencoder.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = .001), loss=autoencoding_loss, metrics = ['mse','mae'], run_eagerly=False)
+            Autoencoder.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = .001), loss=L2_loss, metrics = ['mse','mae'], run_eagerly=False)
             history = Autoencoder.fit(generate_pure_bloch(4096), steps_per_epoch=50,epochs=100) #remove generate_pure_bloch and replace with dataset
                                                                  #generate_pure_bloch=4096,steps_per_epoch=50,epochs=100
  
             #SAVE TO A FILE
-            write_history(history, [Autoencoder, Phi, Phi_inv], datadir='./Results/', batch_size='4096')
+            write_history(history, [Autoencoder, Phi, Phi_inv], datadir='./Results3antiK/', batch_size='4096')
     

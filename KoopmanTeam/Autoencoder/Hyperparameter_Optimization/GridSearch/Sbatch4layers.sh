@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
 #SBATCH --exclusive=user
-#SBATCH --mem=64gb
+#SBATCH --mem=8gb
 #SBATCH -J "4L TEST"
 #SBATCH --mail-user=mitchellccutler@gmail.com   # email address
 #SBATCH --mail-type=FAIL

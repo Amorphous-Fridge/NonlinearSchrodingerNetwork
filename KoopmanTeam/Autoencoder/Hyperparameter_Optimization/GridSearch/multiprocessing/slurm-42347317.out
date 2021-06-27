@@ -1,0 +1,152 @@
+
+Inactive Modules:
+  1) defaultenv
+
+The following have been reloaded with a version change:
+  1) python/3.6 => python/3.8
+
+2021-06-25 21:31:39.986638: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2021-06-25 21:31:39.986695: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2021-06-25 21:31:45.206265: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2021-06-25 21:31:45.423934: E tensorflow/stream_executor/cuda/cuda_driver.cc:328] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2021-06-25 21:31:45.424015: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (m7-18-7.rc.byu.edu): /proc/driver/nvidia/version does not exist
+[(8, 16, 8), (8, 32, 8), (8, 32, 16), (16, 32, 8), (16, 32, 16), (8, 64, 8), (8, 64, 16), (8, 64, 32), (16, 64, 8), (16, 64, 16), (16, 64, 32), (32, 64, 8), (32, 64, 16), (32, 64, 32), (8, 128, 8), (8, 128, 16), (8, 128, 32), (8, 128, 64), (16, 128, 8), (16, 128, 16), (16, 128, 32), (16, 128, 64), (32, 128, 8), (32, 128, 16), (32, 128, 32), (32, 128, 64), (64, 128, 8), (64, 128, 16), (64, 128, 32), (64, 128, 64), (8, 256, 8), (8, 256, 16), (8, 256, 32), (8, 256, 64), (8, 256, 128), (16, 256, 8), (16, 256, 16), (16, 256, 32), (16, 256, 64), (16, 256, 128), (32, 256, 8), (32, 256, 16), (32, 256, 32), (32, 256, 64), (32, 256, 128), (64, 256, 8), (64, 256, 16), (64, 256, 32), (64, 256, 64), (64, 256, 128), (128, 256, 8), (128, 256, 16), (128, 256, 32), (128, 256, 64), (128, 256, 128), (8, 512, 8), (8, 512, 16), (8, 512, 32), (8, 512, 64), (8, 512, 128), (8, 512, 256), (16, 512, 8), (16, 512, 16), (16, 512, 32), (16, 512, 64), (16, 512, 128), (16, 512, 256), (32, 512, 8), (32, 512, 16), (32, 512, 32), (32, 512, 64), (32, 512, 128), (32, 512, 256), (64, 512, 8), (64, 512, 16), (64, 512, 32), (64, 512, 64), (64, 512, 128), (64, 512, 256), (128, 512, 8), (128, 512, 16), (128, 512, 32), (128, 512, 64), (128, 512, 128), (128, 512, 256), (256, 512, 8), (256, 512, 16), (256, 512, 32), (256, 512, 64), (256, 512, 128), (256, 512, 256)]
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+Conner is a nerd
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+WARNING:tensorflow:Model was constructed with shape (None, 3) for input KerasTensor(type_spec=TensorSpec(shape=(None, 3), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (None, 2).
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/apps/python/3.8.2/gcc-9.2.0/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/apps/python/3.8.2/gcc-9.2.0/lib/python3.8/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+  File "gridsearch_3layers.py", line 56, in trainModel
+    Autoencoder = tf.keras.models.Sequential([Phi, Phi_inv], name='Autoencoder')
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/training/tracking/base.py", line 522, in _method_wrapper
+    result = method(self, *args, **kwargs)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/sequential.py", line 141, in __init__
+    self.add(layer)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/training/tracking/base.py", line 522, in _method_wrapper
+    result = method(self, *args, **kwargs)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/sequential.py", line 228, in add
+    output_tensor = layer(self.outputs[0])
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py", line 969, in __call__
+    return self._functional_construction_call(inputs, args, kwargs,
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1107, in _functional_construction_call
+    outputs = self._keras_tensor_symbolic_call(
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py", line 840, in _keras_tensor_symbolic_call
+    return self._infer_output_signature(inputs, args, kwargs, input_masks)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py", line 880, in _infer_output_signature
+    outputs = call_fn(inputs, *args, **kwargs)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/functional.py", line 420, in call
+    return self._run_internal_graph(
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/functional.py", line 556, in _run_internal_graph
+    outputs = node.layer(*args, **kwargs)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1013, in __call__
+    input_spec.assert_input_compatibility(self.input_spec, inputs, self.name)
+  File "/fslhome/mccutler/.local/lib/python3.8/site-packages/tensorflow/python/keras/engine/input_spec.py", line 251, in assert_input_compatibility
+    raise ValueError(
+ValueError: Input 0 of layer decoding_layer_1 is incompatible with the layer: expected axis -1 of input shape to have value 3 but received input with shape (None, 2)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "gridsearch_3layers.py", line 77, in <module>
+    pool.starmap(trainModel,widths)
+  File "/apps/python/3.8.2/gcc-9.2.0/lib/python3.8/multiprocessing/pool.py", line 372, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+  File "/apps/python/3.8.2/gcc-9.2.0/lib/python3.8/multiprocessing/pool.py", line 768, in get
+    raise self._value
+ValueError: Input 0 of layer decoding_layer_1 is incompatible with the layer: expected axis -1 of input shape to have value 3 but received input with shape (None, 2)
+slurmstepd: error: *** JOB 42347317 ON m7-18-7 CANCELLED AT 2021-06-25T21:36:59 DUE TO TIME LIMIT ***
