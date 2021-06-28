@@ -17,9 +17,11 @@ if len(physical_devices) != 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 #PARAMETER SETUP
-STATE_DIMENSION = 4    #Treating two complex dimensions as 4 real dimensions for now
+#STATE_DIMENSION = 4
+STATE_DIMENSION = int(os.getenv('STATE_DIM'))    #Treating two complex dimensions as 4 real dimensions for now
                           #Vector will be [real1, imag1, real2, imag2]
-ANTIKOOPMAN_DIMENSION = 2
+#ANTIKOOPMAN_DIMENSION = 3
+ANTIKOOPMAN_DIMENSION = int(os.getenv('ANTIK_DIM'))
 
 #DATA GENERATION
 def generate_pure_bloch(batch_size=16):
@@ -123,7 +125,7 @@ def generate_pure_bloch_test(batch_size=4096):
 def L2_loss(y_true, y_pred):
     '''The L2 norm of the input vector
     and the autoencoded vector'''
-    return tf.norm(y_true-y_pred, ord = 2)
+    return tf.norm(y_true-y_pred, ord = 2, axis=-1)
 
 
 def get_relative_phase(vector):
@@ -185,7 +187,7 @@ def autoencoding_loss(y_true, y_pred):
 ##############################################################
 def write_history(history, model, loss = 'autoencoding_loss', 
                   optimizer='Adam', lr='.001', 
-                  batch_size='1024', datadir='./Results/'):
+                  batch_size='1024', datadir='./Results/',modelnum='na'):
     '''Writes training history to a datafile
     This will create a new trial datafile.  If the model has 
     had additional training, append_history should be used instead.
@@ -203,7 +205,10 @@ def write_history(history, model, loss = 'autoencoding_loss',
     '''
     
     rundatadir = datadir
-    filename = 'trial'+str(len(os.listdir(rundatadir)))
+    if modelnum =='na':
+        filename = 'trial'+str(len(os.listdir(rundatadir)))
+    else:
+        filename = 'trial'+modelnum
 
     with open(rundatadir+filename+'.data', 'w') as f:
         f.write(str(date.today())+'\n')
