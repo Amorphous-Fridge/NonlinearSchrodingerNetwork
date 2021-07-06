@@ -113,6 +113,13 @@ def append_history(history, trial=None, datadir='./datafiles/', params_update = 
             else:
                 f.write(el)
     return
+
+
+def note_history(trial, datadir, note):
+    with open(datadir+'trial{}.data'.format(trial), 'a') as f:
+        f.write('\n')
+        f.write(note)
+    return
     
     
 def loss_plot(trial, datadir='./datafiles/', savefig = True,
