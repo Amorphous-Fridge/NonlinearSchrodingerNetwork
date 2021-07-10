@@ -38,7 +38,7 @@ def write_history(history, model, loss = 'autoencoding_loss',
             f.write('\n')
         f.write("Loss,{}\nOptimizer,{}\nLearning Rate,{}\nSteps Per Epoch,{}\nBatch Size,{}\nEpochs,{}\n".format(loss,optimizer,lr,history.params['steps'],batch_size, history.params['epochs']))
         for k in other_info.keys():
-            f.write("{},{}".format(k, other_info[k]))
+            f.write("{},{}\n".format(k, other_info[k]))
         f.write('\n')
         with redirect_stdout(f):
             if type(model) == list:
