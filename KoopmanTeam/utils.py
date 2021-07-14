@@ -70,7 +70,8 @@ def append_history(history, trial=None, datadir='./datafiles/', params_update = 
     '''
     
     if trial==None:
-        trial = max([int(x.strip('.data').strip('trial')) for x in os.listdir(datadir)])
+        files = [f for f in os.listdir(datadir) if os.path.isfile(os.path.join(datadir,f))]
+        trial = max([int(x.strip('.data').strip('trial')) for x in files])
     
     filename = 'trial'+str(trial)+'.data'
     
