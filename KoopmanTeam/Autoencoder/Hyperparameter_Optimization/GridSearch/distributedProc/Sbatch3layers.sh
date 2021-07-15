@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --time=01:00:00   # walltime
+#SBATCH --time=00:10:00   # walltime
 # --exclude=m8-18-6,m8-11-2,m7-1-1,m7-4-3,m7-8-11,m8g-1-1,m8g-3-11,m8g-2-9,m7-10-3,m7-11-5,m7-5-5,m7-10-5,m8-1-1,
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
@@ -21,7 +21,8 @@ export PBS_QUEUE=batch
 export OMP_NUM_THREADS=$SLURM_CPUS_ON_NODE
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
-export WIDTH=$SLURM_ARRAY_TASK_ID
+#export WIDTH=$SLURM_ARRAY_TASK_ID
+export WIDTH=90
 module load python/3.8
 
 python3 -u gridsearch_3layers.py

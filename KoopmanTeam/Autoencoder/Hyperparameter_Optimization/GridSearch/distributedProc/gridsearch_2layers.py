@@ -53,15 +53,26 @@ decoding_layer_1 = tf.keras.layers.Dense(width2, activation = "selu", name='deco
 decoding_layer_2 = tf.keras.layers.Dense(width1, activation = "selu", name='decoding_layer_2')(decoding_layer_1)
 decoded_state = tf.keras.layers.Dense(STATE_DIMENSION, activation = "selu", name='decoded_layer')(decoding_layer_2)
 #####################################################################################################################
+
+#Learning Rate Scheduler
+def scheduler(epoch):
+    if epoch<250:
+        return 0.001
+    if epoch<750:
+        return 0.0001
+    else:
+        return 0.00001
+
 #Model declarations
 Phi = tf.keras.Model(inputs=initial_state, outputs = encoded_state, name='Phi')
 Phi_inv = tf.keras.Model(inputs = antikoop_state, outputs = decoded_state, name='Phi_inv')
 Autoencoder = tf.keras.models.Sequential([Phi, Phi_inv], name='Autoencoder')
 #COMPILE AND TRAIN
 Autoencoder.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = .001), loss=L2_loss, metrics = ['mse','mae'], run_eagerly=False)
-history = Autoencoder.fit(generate_pure_bloch(4096), steps_per_epoch=50,epochs=100) #remove generate_pure_bloch and replace with dataset
+callback = tf.keras.callbacks.LearningRateScheduler(scheduler)
+history = Autoencoder.fit(generate_pure_bloch(4096), steps_per_epoch=50,epochs=1000, callbacks=[callback], verbose=0) #remove generate_pure_bloch and replace with dataset
                                                      #generate_pure_bloch=4096,steps_per_epoch=50,epochs=100
 
 #SAVE TO A FILE
-write_history(history, [Autoencoder, Phi, Phi_inv], datadir='./Results2L/', batch_size='4096',modelnum=str(modelnum))
+write_history(history, [Autoencoder, Phi, Phi_inv], datadir='./Results2Lfinal/', batch_size='4096',modelnum=str(modelnum))
 

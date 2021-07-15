@@ -107,8 +107,8 @@ dataset_sizes = (2000, 3000, 4000, 5000, 10000, 15000, 20000, 25000, 30000, 3500
 
 for datasize in dataset_sizes:
 
-
-    train_data, val_data = get_multiple_evolutions('../../QuantumTeam/data/50000inits_dt0p1/', datasize, int(0.9*datasize), pre_compress_phi=True)
+    #TODO: check patch
+    train_data, val_data = get_multiple_evolutions('../../../QuantumTeam/data/50000inits_dt0p1/', datasize, int(0.9*datasize), pre_compress_phi=True)
     train_data = train_data.batch(100000)
     val_data = val_data.batch(100000)
 

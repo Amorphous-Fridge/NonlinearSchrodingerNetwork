@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --time=01:00:00   # walltime
+#SBATCH --time=60:00:00   # walltime
 # --exclude=m8-18-6,m8-11-2,m7-1-1,m7-4-3,m7-8-11,m8g-1-1,m8g-3-11,m8g-2-9,m7-10-3,m7-11-5,m7-5-5,m7-10-5,m8-1-1,
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
 #SBATCH --exclusive=user
-#SBATCH --mem=1gb
-#SBATCH -J "2layers distributed"
+#SBATCH --mem=2gb
+#SBATCH -J "2layers distributed CPU"
 #SBATCH --mail-user=mitchellccutler@gmail.com   # email address
 #SBATCH --mail-type=FAIL
 #SBATCH --parsable
