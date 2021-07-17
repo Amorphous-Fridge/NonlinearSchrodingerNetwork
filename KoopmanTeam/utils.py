@@ -8,7 +8,7 @@ import os
 def write_history(history, model, loss = 'autoencoding_loss', 
                   optimizer='Adam', lr='.001', 
                   batch_size='1024', datadir='./datafiles/',
-                  other_info={}):
+                  other_info={}, savedname=None):
     '''Writes training history to a datafile
     This will create a new trial datafile.  If the model has 
     had additional training, append_history should be used instead.
@@ -27,9 +27,12 @@ def write_history(history, model, loss = 'autoencoding_loss',
     '''
     
     rundatadir = datadir
-    filename = 'trial'+str(len(os.listdir(rundatadir)))
+    if savedname==None:
+        filename = 'trial'+str(len(os.listdir(rundatadir)))+'.data'
+    else:
+        filename = savedname
 
-    with open(rundatadir+filename+'.data', 'w') as f:
+    with open(rundatadir+filename, 'w') as f:
         f.write(str(date.today())+'\n')
         for key in history.history.keys():
             f.write(key+',')
@@ -46,7 +49,7 @@ def write_history(history, model, loss = 'autoencoding_loss',
                     i.summary()
             else:
                 model.summary()
-    return rundatadir+filename+'.data'
+    return rundatadir+filename
 
 #####################################################################
 #####################################################################
@@ -73,7 +76,10 @@ def append_history(history, trial=None, datadir='./datafiles/', params_update = 
         files = [f for f in os.listdir(datadir) if os.path.isfile(os.path.join(datadir,f))]
         trial = max([int(x.strip('.data').strip('trial')) for x in files])
     
-    filename = 'trial'+str(trial)+'.data'
+    elif type(trial)==int:
+        filename = 'trial'+str(trial)+'.data'
+    else:
+        filename = trial
     
     
     newlines = []
@@ -139,7 +145,7 @@ def loss_plot(trial, datadir='./datafiles/', savefig = True,
     runs = []
     
     #Read in the data
-    with open(datadir+'trial'+str(trial)+'.data', 'r') as f:
+    with open(trial, 'r') as f:
         for line in f.readlines():
             if line.split(',')[0] == metric:
                 losses = [float(x) for x in line.strip().split(',')[1:]]
