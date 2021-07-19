@@ -1,0 +1,46 @@
+
+Inactive Modules:
+  1) defaultenv
+
+
+Activating Modules:
+  1) defaultenv/10
+
+2021-07-15 18:55:48.402793: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2021-07-15 18:55:48.501402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:85:00.0
+2021-07-15 18:55:48.504401: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2021-07-15 18:55:48.506723: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2021-07-15 18:55:48.509715: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2021-07-15 18:55:48.511051: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2021-07-15 18:55:48.514003: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2021-07-15 18:55:48.522916: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2021-07-15 18:55:48.557045: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-07-15 18:55:48.565821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2021-07-15 18:55:48.602013: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2021-07-15 18:55:48.610302: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300085000 Hz
+2021-07-15 18:55:48.610554: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x578f630 executing computations on platform Host. Devices:
+2021-07-15 18:55:48.610578: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+2021-07-15 18:55:48.827803: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5791eb0 executing computations on platform CUDA. Devices:
+2021-07-15 18:55:48.827856: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla K80, Compute Capability 3.7
+2021-07-15 18:55:48.829720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:85:00.0
+2021-07-15 18:55:48.829810: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2021-07-15 18:55:48.829851: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2021-07-15 18:55:48.829887: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2021-07-15 18:55:48.829929: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2021-07-15 18:55:48.829945: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2021-07-15 18:55:48.829962: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2021-07-15 18:55:48.829979: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-07-15 18:55:48.836493: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2021-07-15 18:55:48.836537: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2021-07-15 18:55:48.841052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-07-15 18:55:48.841073: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2021-07-15 18:55:48.841087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2021-07-15 18:55:48.849635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10813 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:85:00.0, compute capability: 3.7)
+20000 6
+2021-07-15 18:55:49.865714: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+/var/spool/slurmd/job42669419/slurm_script: line 22: 21164 Killed                  python3 -u dataspace_search_dt0p01.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=42669419.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
