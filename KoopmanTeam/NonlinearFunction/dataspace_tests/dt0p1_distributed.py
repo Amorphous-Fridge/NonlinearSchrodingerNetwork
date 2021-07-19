@@ -12,16 +12,19 @@ sys.path.remove('../..')
 #Always uses the 1st GPU avalible (if avalible) unless 1st line is uncommented, in which case no GPU is used
 
 #tf.config.set_visible_devices([], 'GPU') #uncomment to set tensorflow to use CPU
-physical_devices = tf.config.list_physical_devices('GPU')
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+#physical_devices = tf.config.list_physical_devices('GPU')
 if len(physical_devices) != 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
 elif len(physical_devices) == 0:
     print("Warning: No GPU detected.  Running tensorflow on CPU")
-    
+ 
 
 #Import autoencoder functions, needed for comrpessing the data into a space the nonlinear function can train on
-Phi = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi.h5', compile=False)
-Phi_inv = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi_inv.h5', compile=False)
+Phi = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+Phi_inv = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi_inv.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+#Phi = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi.h5', compile=False)
+#Phi_inv = tf.keras.models.load_model('../../Autoencoder/Autoencoder_Trials/models/trial25e1000Phi_inv.h5', compile=False)
 
 def L2_loss(y_true, y_pred):
     return tf.norm(y_true-y_pred, ord=2, axis=-1)
@@ -102,7 +105,7 @@ def get_multiple_evolutions(datadir, num_evolutions, train_evolutions, ideal_pre
 inputs = tf.keras.Input(shape=3)
 
 #Set dataset sizes to test
-size = int(os.getenv('SIZE'))
+size = int(os.getenv('SIZE'))-1
 dataset_sizes = [2000, 3000, 4000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000]
 datasize = dataset_sizes[size]
 
@@ -120,7 +123,6 @@ nonlinear_layer_4 = tf.keras.layers.Dense(512, activation='selu', name='nonlinea
 nonlinear_layer_5 = tf.keras.layers.Dense(256, activation='selu', name='nonlinear_layer_5')(nonlinear_layer_4)
 nonlinear_layer_6 = tf.keras.layers.Dense(64, activation='selu', name='nonlinear_layer_6')(nonlinear_layer_5)
 evolved = tf.keras.layers.Dense(3, activation='selu', name='evolved_state_layer')(nonlinear_layer_6)
-
 NonlinearEvolution = tf.keras.Model(inputs=inputs, outputs=evolved)
 
 
@@ -136,4 +138,4 @@ history = NonlinearEvolution.fit(train_data, validation_data=val_data, epochs=25
 append_history(history, params={'Learning Rate':.0001})
 
 #Save the model and label it w/ amount of data it was trained on
-NonlinearFunction.save('./models/{}inits_dt0p1.h5'.format(datasize))
+NonlinearEvolution.save('./models/{}inits_dt0p1.h5'.format(datasize))
