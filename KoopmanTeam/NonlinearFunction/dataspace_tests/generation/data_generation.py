@@ -9,16 +9,21 @@ import os
 
 
 TIMERANGE = int(os.getenv('SLURM_ARRAY_TASK_ID'))
-
+CAPBYEVOLVE=True
 
 DATADIR='/fslhome/wilhiteh/datasets/'
 #TIMERANGE=5  #uncomment for manual selection
 TIMESTEP=0.025
-MAXPOINTS=5000000
+MAXPOINTS=10000000
+MAXEVOLVE=50000
 
 
-points_per_file = int(np.ceil(TIMERANGE/TIMESTEP)) #This is what actually decides our memory usage
-num_files = int(np.floor(MAXPOINTS/points_per_file))
+
+points_per_file = int(np.ceil(TIMERANGE/TIMESTEP))
+if CAPBYEVOLVE:
+    num_files = MAXEVOLVE
+else:
+    num_files = int(np.floor(MAXPOINTS/points_per_file))
 dataset = '0t{}_{}inits_dt{}_memfit/'.format(TIMERANGE,num_files,str(TIMESTEP).replace('.','p'))
 
 if not (os.path.isdir(DATADIR+dataset)):

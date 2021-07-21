@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#SBATCH --time=02:00:00   # walltime
+#SBATCH --time=06:00:00   # walltime
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --mem-per-cpu=1024M   # memory per CPU core
-#SBATCH -J "data_generation_0p05"   # job name
-#SBATCH --array=5,10,15,20
+#SBATCH --mem-per-cpu=2048M   # memory per CPU core
+#SBATCH -J "data_generation_extended_0p025"   # job name
+#SBATCH --array=20
 
 
 # Set the max number of threads to use for programs using OpenMP. Should be <= ppn. Does nothing if the program doesn't use OpenMP.

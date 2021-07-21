@@ -9,14 +9,19 @@ from utils import *
 ####Theese are the only values that need to be configured####
 DATADIR='/fslhome/wilhiteh/datasets/'
 TIMESTEP = 0.1
-TIMERANGE = 50
+TIMERANGE = 20
 MAXPOINTS = 5000000
-MEMFIT = False
+CAPBYEVOLVE = True
+MAXEVOLVE = 50000
+MEMFIT = True
 #############################################################
 
 points_per_file = int(np.ceil(TIMERANGE/TIMESTEP))
 if MEMFIT:
-    num_files = int(np.floor(MAXPOINTS/points_per_file))
+    if CAPBYEVOLVE:
+        num_files = MAXEVOLVE
+    else:
+        num_files = int(np.floor(MAXPOINTS/points_per_file))
     dataset = '0t{}_{}inits_dt{}_memfit_compressed/'.format(TIMERANGE,num_files,str(TIMESTEP).replace('.','p'))
 else:
     num_files = 50000
@@ -25,7 +30,7 @@ else:
 timestep = str(TIMESTEP).replace('.','p')
 
 #Set dataset sizes to test
-dataset_sizes = (2000, 3000, 4000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000)
+dataset_sizes = (2000, 3000, 4000, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000)
 
 size = int(os.getenv('SLURM_ARRAY_TASK_ID'))
 
@@ -35,6 +40,8 @@ EPOCHS = int(os.getenv('EPOCHS'))
 
 NAME = '0t{}_dt{}_{}inits'.format(TIMERANGE,timestep,datasize)
 #NAME = 'NONMEMFITTEST'
+
+print('Running with name {}\nMEMFIT is {}, CAPBYEVOLVE is {}, and the max evolution file is {}\nReading from dataset {}'.format(NAME,MEMFIT,CAPBYEVOLVE,MAXEVOLVE,DATADIR+dataset))
 
 #Some GPU configuration
 #Always uses the 1st GPU avalible (if avalible) unless 1st line is uncommented, in which case no GPU is used
