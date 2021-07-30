@@ -7,24 +7,53 @@ from scipy.linalg import expm
 import cmath
 import os
 
+'''
+This file handles the generation of the datasets.  A dataset with the specified 
+parameters is created and the hamiltonian that generated it is saved under the same name
+to a seperate hamiltonians directory.  Currently the hamiltonian is hardcoded on the 
+last line of code in this file.
+
+PARAMS TO CONFIGURE:
+--------------------
+
+DATADIR: Directory to save the dataset to.  This is not the name of the 
+         dataset, just the directory that is resides in (naming is handled 
+         automatically based on the parameters of the dataset)
+         The hamiltonians for our datasets are stored in a seperate 
+         subdirectory of DATADIR called 'hamiltonians/'.
+
+TIMERANGE*: Sets period of time (starting from 0) which the system 
+            should be evolved through.
+
+TIMESTEP*: Sets the timestep for the evolution
+
+MAXEVOLVE: The total number of evolutions we wish to generate
+           NOTE: The number of evolutions actually trained on is set
+           in searches.py, so this value should be whatever the largest 
+           number of initial conditions we expect to use is.
+
+*One of TIMERANGE or TIMESTEP can be set via the slurm array ID to make generating
+multiple evolutions at once easier.  If this is done, make sure that the parameter is not
+reset to a fixed value in the PARAMS TO CONFIGURE section
+
+'''
+
+
 
 TIMERANGE = int(os.getenv('SLURM_ARRAY_TASK_ID'))
-CAPBYEVOLVE=True
 
+
+##############PARAMS TO CONFIGURE###########3
 DATADIR='/fslhome/wilhiteh/datasets/'
-#TIMERANGE=5  #uncomment for manual selection
+#TIMERANGE=5  #uncomment for manual selection, otherwise taken care of by slurm ID
 TIMESTEP=0.025
-MAXPOINTS=10000000
 MAXEVOLVE=50000
-
+#############################################
 
 
 points_per_file = int(np.ceil(TIMERANGE/TIMESTEP))
-if CAPBYEVOLVE:
-    num_files = MAXEVOLVE
-else:
-    num_files = int(np.floor(MAXPOINTS/points_per_file))
-dataset = '0t{}_{}inits_dt{}_memfit/'.format(TIMERANGE,num_files,str(TIMESTEP).replace('.','p'))
+num_files = MAXEVOLVE
+dataset = '0t{}_{}inits_dt{}/'.format(TIMERANGE,num_files,str(TIMESTEP).replace('.','p'))
 
 if not (os.path.isdir(DATADIR+dataset)):
     os.mkdir(DATADIR+dataset)
