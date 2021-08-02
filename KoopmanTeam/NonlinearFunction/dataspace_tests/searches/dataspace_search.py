@@ -111,9 +111,13 @@ size = int(os.getenv('SLURM_ARRAY_TASK_ID'))
 
 datasize = dataset_sizes[size]
 
-
-NAME = '0t{}_dt{}_{}inits'.format(TIMERANGE,timestep,datasize)
-
+if COMPRESSED_TRAINING:
+    NAME = '0t{}_dt{}_{}inits'.format(TIMERANGE,timestep,datasize)
+else:
+    NAME = '0t{}_dt{}_{}inits_blochspace'.format(TIMERANGE,timestep,datasize)
+   
+    
+    
 print('Running with name {}\nMEMFIT is {}, CAPBYEVOLVE is {}, and the max evolution file is {}\nReading from dataset {}'.format(NAME,MEMFIT,CAPBYEVOLVE,MAXEVOLVE,DATADIR+dataset))
 
 #Some GPU configuration
