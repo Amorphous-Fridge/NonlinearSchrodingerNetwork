@@ -78,16 +78,20 @@ Just to make it confusing though, the dataset that is read must follow the conve
 
 
 ####Theese are the only values that need to be configured####
-DATADIR='/fslhome/wilhiteh/datasets/'
-WRITEDIR='/fslhome/wilhiteh/datafiles/'
-MODELDIR='/fslhome/wilhiteh/models/'
-TIMESTEP = 0.025
-TIMERANGE = 20
+#DATADIR='/fslhome/wilhiteh/datasets/'
+DATADIR='/fslhome/mccutler/Koopman-Quantum/bkp/datasets_mc/'
+#WRITEDIR='/fslhome/wilhiteh/datafiles/'
+WRITEDIR='/fslhome/mccutler/bkp/datafiles/'
+#MODELDIR='/fslhome/wilhiteh/models/'
+MODELDIR='/fslhome/mccutler/bkp/models/'
+TIMESTEP = 0.05
+TIMERANGE = 50
 MAXEVOLVE = 50000
 BATCH_SIZE = 100000 #100000 points on bloch w/ ~500k params fit in ~2GB VRAM, FSC has ~12GB
 MEMFIT = True #MEMFIT=False is currently NOT working
 EPOCHS = 250
 COMPRESSED_TRAINING = False
+CAPBYEVOLVE = False
 #############################################################
 
 #Determine what our dataset is
@@ -100,7 +104,8 @@ suffix += '/'
 
 timestep = str(TIMESTEP).replace('.','p')
 
-dataset = '0t{}_{}inits_dt{}_memfit{}'.format(TIMERANGE,num_files,timestep,suffix)
+#dataset = '0t{}_{}inits_dt{}_memfit{}'.format(TIMERANGE,num_files,timestep,suffix)
+dataset = '0t{}_{}inits_dt{}{}'.format(TIMERANGE,str(50000),timestep,suffix)
 
 
 
@@ -131,8 +136,10 @@ elif len(physical_devices) == 0:
     
 
 #Import autoencoder functions, needed for comrpessing the data into a space the nonlinear function can train on
-Phi = tf.keras.models.load_model('/fslhome/wilhiteh/Autoencoder/trial25e1000Phi.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
-Phi_inv = tf.keras.models.load_model('/fslhome/wilhiteh/Autoencoder/trial25e1000Phi_inv.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+#Phi = tf.keras.models.load_model('/fslhome/wilhiteh/Autoencoder/trial25e1000Phi.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+#Phi_inv = tf.keras.models.load_model('/fslhome/wilhiteh/Autoencoder/trial25e1000Phi_inv.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+Phi = tf.keras.models.load_model('/fslhome/mccutler/Koopman-Quantum/shared-git/NonlinearSchrodingerNetwork/KoopmanTeam/Autoencoder/Autoencoder_Trials/models/trial25e1000Phi.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
+Phi_inv = tf.keras.models.load_model('/fslhome/mccutler/Koopman-Quantum/shared-git/NonlinearSchrodingerNetwork/KoopmanTeam/Autoencoder/Autoencoder_Trials/models/trial25e1000Phi_inv.h5', compile=False, custom_objects={'Functional':tf.keras.models.Model})
 
 
 #Loss function
@@ -267,7 +274,7 @@ else:
     Phi.trainable = False
     Phi_inv.trainable = False
     
-    AntiKoopman = tf.keras.models.Sequeuntial([Phi, NonlinearEvolution, Phi_inv], name='AntiKoopman')
+    AntiKoopman = tf.keras.models.Sequential([Phi, NonlinearEvolution, Phi_inv], name='AntiKoopman')
     
     #First 250 epochs w/ high learning rate
     AntiKoopman.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=.001), loss=L2_loss, metrics=['mse', 'mae'])
