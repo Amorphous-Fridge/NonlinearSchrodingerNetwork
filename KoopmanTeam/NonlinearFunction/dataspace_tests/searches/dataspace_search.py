@@ -50,6 +50,8 @@ COMPRESSED_TRAINING: If true, we train the model in the compressed space.  If fa
                      compressed space, or the uncompressed space?).
                      If true, the dataset must be pre-compressed ahead of time using 
                      the tools provided in the processing directory.
+                     If false, we assume that an evolution function pre-trained in the
+                     compressed space already exists in MODELDIR and load that.
 
 
 
@@ -77,7 +79,7 @@ Just to make it confusing though, the dataset that is read must follow the conve
 
 
 
-####Theese are the only values that need to be configured####
+####These are the only values that need to be configured####
 #DATADIR='/fslhome/wilhiteh/datasets/'
 DATADIR='/fslhome/mccutler/Koopman-Quantum/bkp/datasets_mc/'
 #WRITEDIR='/fslhome/wilhiteh/datafiles/'
@@ -91,7 +93,6 @@ BATCH_SIZE = 100000 #100000 points on bloch w/ ~500k params fit in ~2GB VRAM, FS
 MEMFIT = True #MEMFIT=False is currently NOT working
 EPOCHS = 250
 COMPRESSED_TRAINING = False
-CAPBYEVOLVE = False
 #############################################################
 
 #Determine what our dataset is
@@ -105,7 +106,7 @@ suffix += '/'
 timestep = str(TIMESTEP).replace('.','p')
 
 #dataset = '0t{}_{}inits_dt{}_memfit{}'.format(TIMERANGE,num_files,timestep,suffix)
-dataset = '0t{}_{}inits_dt{}{}'.format(TIMERANGE,str(50000),timestep,suffix)
+dataset = '0t{}_{}inits_dt{}{}'.format(TIMERANGE,MAXEVOLVE,timestep,suffix)
 
 
 
@@ -123,7 +124,7 @@ else:
    
     
     
-print('Running with name {}\nMEMFIT is {}, CAPBYEVOLVE is {}, and the max evolution file is {}\nReading from dataset {}'.format(NAME,MEMFIT,CAPBYEVOLVE,MAXEVOLVE,DATADIR+dataset))
+print('Running with name {}\nMEMFIT is {}, and the max evolution file is {}\nReading from dataset {}'.format(NAME,MEMFIT,MAXEVOLVE,DATADIR+dataset))
 
 #Some GPU configuration
 #If we want to use multiple GPUs, this bit will need to be modified
@@ -236,19 +237,20 @@ if not MEMFIT:
     
 
 
-
-#Re-declare model each time to re-initilize parameters
-nonlinear_layer_1 = tf.keras.layers.Dense(64, activation='selu', name='nonlinear_layer_1')(inputs)
-nonlinear_layer_2 = tf.keras.layers.Dense(256, activation='selu', name='nonlinear_layer_2')(nonlinear_layer_1)
-nonlinear_layer_3 = tf.keras.layers.Dense(512, activation='selu', name='nonlinear_layer_3')(nonlinear_layer_2)
-nonlinear_layer_4 = tf.keras.layers.Dense(512, activation='selu', name='nonlinear_layer_4')(nonlinear_layer_3)
-nonlinear_layer_5 = tf.keras.layers.Dense(256, activation='selu', name='nonlinear_layer_5')(nonlinear_layer_4)
-nonlinear_layer_6 = tf.keras.layers.Dense(64, activation='selu', name='nonlinear_layer_6')(nonlinear_layer_5)
-evolved = tf.keras.layers.Dense(3, activation='selu', name='evolved_state_layer')(nonlinear_layer_6)
-
-NonlinearEvolution = tf.keras.Model(inputs=inputs, outputs=evolved, name='Evolution')
-
 if COMPRESSED_TRAINING:
+
+    #Re-declare model each time to re-initilize parameters
+    nonlinear_layer_1 = tf.keras.layers.Dense(64, activation='selu', name='nonlinear_layer_1')(inputs)
+    nonlinear_layer_2 = tf.keras.layers.Dense(256, activation='selu', name='nonlinear_layer_2')(nonlinear_layer_1)
+    nonlinear_layer_3 = tf.keras.layers.Dense(512, activation='selu', name='nonlinear_layer_3')(nonlinear_layer_2)
+    nonlinear_layer_4 = tf.keras.layers.Dense(512, activation='selu', name='nonlinear_layer_4')(nonlinear_layer_3)
+    nonlinear_layer_5 = tf.keras.layers.Dense(256, activation='selu', name='nonlinear_layer_5')(nonlinear_layer_4)
+    nonlinear_layer_6 = tf.keras.layers.Dense(64, activation='selu', name='nonlinear_layer_6')(nonlinear_layer_5)
+    evolved = tf.keras.layers.Dense(3, activation='selu', name='evolved_state_layer')(nonlinear_layer_6)
+
+    NonlinearEvolution = tf.keras.Model(inputs=inputs, outputs=evolved, name='Evolution')
+
+
 
     #First 250 epochs w/ high learning rate
     NonlinearEvolution.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=.001), loss=L2_loss, metrics=['mse', 'mae'])
@@ -270,6 +272,8 @@ if COMPRESSED_TRAINING:
     NonlinearEvolution.save(MODELDIR+NAME+'.h5')
     
 else:
+    
+    NonlinearEvolution = tf.keras.models.load_model(MODELDIR+'0t{}_dt{}_{}inits.h5'.format(TIMERANGE, str(TIMESTEP).replace('.','p'), datasize), compile=False, custom_objects={'Functional':tf.keras.models.Model})
     
     Phi.trainable = False
     Phi_inv.trainable = False
